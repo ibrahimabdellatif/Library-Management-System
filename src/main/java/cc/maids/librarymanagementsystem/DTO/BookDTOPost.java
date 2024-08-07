@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.ISBN;
 
 @Getter
 @Setter
@@ -24,7 +25,7 @@ public class BookDTOPost {
     @Max(2050)
     private int publicationYear;
 
-    @Size(min = 10 , max = 13 , message = "ISBN must be between 10 and 13 digits")
+    @ISBN(message = "ISBN must be between 10 and 13 digits")
     private String isbn;
 
 }

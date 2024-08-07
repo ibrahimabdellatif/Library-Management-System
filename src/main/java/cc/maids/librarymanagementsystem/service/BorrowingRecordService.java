@@ -31,7 +31,7 @@ public class BorrowingRecordService {
 
         if (bookExists && patronExists) {
             borrowingRecord.setBook(bookRepository.findById(bookId).isPresent() ? bookRepository.findById(bookId).get() : null);
-            borrowingRecord.setPatronId(patronId);
+            borrowingRecord.setPatron(patronRepository.findById(patronId).isPresent() ? patronRepository.findById(patronId).get() : null);
             borrowingRecord.setBorrowDate(LocalDate.now());
             borrowingRecordRepository.save(borrowingRecord);
         } else throw new DataIntegrityViolationException("Book does not exist");

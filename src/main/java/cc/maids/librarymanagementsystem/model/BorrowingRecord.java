@@ -17,15 +17,18 @@ public class BorrowingRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "record_id")
     private int recordId;
-    @Column(name = "patron_id")
-    private int patronId;
     @Column(name = "borrow_date")
     private LocalDate borrowDate;
     @Column(name = "return_date")
     private LocalDate returnDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "book_id")
     private Book book;
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "patron_id")
+    private Patron patron;
 
 
 }
