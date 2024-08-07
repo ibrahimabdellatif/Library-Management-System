@@ -4,7 +4,6 @@ package cc.maids.librarymanagementsystem.controller;
 import cc.maids.librarymanagementsystem.DTO.BookDTOPost;
 import cc.maids.librarymanagementsystem.DTO.BookDTOPut;
 import cc.maids.librarymanagementsystem.exception.ResourceNotFoundException;
-import cc.maids.librarymanagementsystem.exception.UserNotFoundException;
 import cc.maids.librarymanagementsystem.model.Book;
 import cc.maids.librarymanagementsystem.service.BookService;
 import jakarta.validation.Valid;
@@ -50,8 +49,8 @@ public class BookController {
     }
 
     @PutMapping("/books/{id}")
-    ResponseEntity<Book> updateBookById(@PathVariable int id,@Valid @RequestBody BookDTOPut updatedBook) {
-        Book book = bookService.getBookById(id).orElseThrow(() -> new ResourceNotFoundException(id,"Book"));
+    ResponseEntity<Book> updateBookById(@PathVariable int id, @Valid @RequestBody BookDTOPut updatedBook) {
+        Book book = bookService.getBookById(id).orElseThrow(() -> new ResourceNotFoundException(id, "Book"));
         book.setTitle(updatedBook.getTitle() != null ? updatedBook.getTitle() : book.getTitle());
         book.setAuthor(updatedBook.getAuthor() != null ? updatedBook.getAuthor() : book.getAuthor());
         book.setPublicationYear(updatedBook.getPublicationYear() != 0 ? updatedBook.getPublicationYear() : book.getPublicationYear());

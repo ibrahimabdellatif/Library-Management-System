@@ -46,8 +46,4 @@ public class PatronService {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(patronDTOPost, Patron.class);
     }
-
-    public boolean isPatronExist(int id) {
-        return patronRepository.existsById(id);
-    }
 }

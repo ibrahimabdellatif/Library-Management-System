@@ -31,10 +31,12 @@ public class BookService {
     public void addBook(Book book) {
         bookRepository.save(book);
     }
+
     @Transactional
     public void updateBook(Book book) {
         bookRepository.save(book);
     }
+
     @Transactional
     public void deleteBook(int id) {
         bookRepository.deleteById(id);
@@ -45,8 +47,5 @@ public class BookService {
         return modelMapper.map(bookDTOPost, Book.class);
     }
 
-    public boolean isBookExist(int id) {
-        return bookRepository.existsById(id);
-    }
 
 }
