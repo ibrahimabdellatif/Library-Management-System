@@ -131,6 +131,11 @@ Use tools like Postman or curl to interact with the API endpoints. Detailed API 
 
 ---
 
+### When You Try to Upate Book, Patron and BorrowingRecord You can pass the full object or just the field that you want to update.
+### If you don't add 'when use Put to update' a specific return Date for Borrowing it will update it auto to take date for today 'LocalDate.now'
+
+---
+
 ### Example API Requests using Postman
 
 Here’s how to interact with each API endpoint using Postman, with real data examples:
@@ -231,7 +236,6 @@ Here’s how to interact with each API endpoint using Postman, with real data ex
 - **Postman Setup:**
   - Method: `POST`
   - URL: `http://localhost:8080/api/borrow/1/patron/1`
-  - No body needed.
 
 #### 8. **Return a Book**
 
@@ -242,7 +246,6 @@ Here’s how to interact with each API endpoint using Postman, with real data ex
 - **Postman Setup:**
   - Method: `PUT`
   - URL: `http://localhost:8080/api/return/1/patron/1`
-  - No body needed.
 
 ---
 
