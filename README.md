@@ -130,10 +130,8 @@ Use tools like Postman or curl to interact with the API endpoints. Detailed API 
 5. Run the application with your preferred IDE or using the command line with `mvn spring-boot:run` or `./gradlew bootRun`.
 
 ---
-
-### When You Try to Upate Book, Patron and BorrowingRecord You can pass the full object or just the field that you want to update.
-### If you don't add 'when use Put to update' a specific return Date for Borrowing it will update it auto to take date for today 'LocalDate.now'
-
+#### When You Try to Upate Book, Patron and BorrowingRecord You can pass the full object or just the field that you want to update.
+#### If you don't add 'when use Put to update' a specific return Date for Borrowing it will update it auto to take date for today 'LocalDate.now'.
 ---
 
 ### Example API Requests using Postman
