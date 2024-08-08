@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/patrons")
 @Validated
 public class PatronController {
 
@@ -24,23 +24,23 @@ public class PatronController {
         this.patronService = patronService;
     }
 
-    @GetMapping("/patrons")
+    @GetMapping
     public List<Patron> getAllPatrons() {
         return patronService.getAllPatrons();
     }
 
-    @GetMapping("/patrons/{id}")
+    @GetMapping("/{id}")
     public Patron getPatronById(@PathVariable int id) {
         return patronService.getPatronById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    @PostMapping("/patrons")
+    @PostMapping
     public Patron createPatron(@Valid @RequestBody PatronDTOPost patronDTOPost) {
         Patron patron = patronService.mapToPatron(patronDTOPost);
         return patronService.addPatron(patron);
     }
 
-    @DeleteMapping("/patrons/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatronById(@PathVariable int id) {
 
         boolean isDeleted = patronService.deletePatron(id);
@@ -54,8 +54,8 @@ public class PatronController {
 
     }
 
-    @PutMapping("/patrons/{id}")
-    public ResponseEntity<Patron> updatePatronById(@PathVariable int id,@Valid @RequestBody PatronDTOPut PatronDTOPut) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Patron> updatePatronById(@PathVariable int id, @Valid @RequestBody PatronDTOPut PatronDTOPut) {
         Patron patron = patronService.getPatronById(id).orElseThrow(() -> new UserNotFoundException(id));
 
         patron.setName(PatronDTOPut.getName() != null ? PatronDTOPut.getName() : patron.getName());
