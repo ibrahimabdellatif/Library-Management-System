@@ -1,15 +1,11 @@
 package cc.maids.librarymanagementsystem.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
 @Table(name = "patron")
-@Setter
-@Getter
-@RequiredArgsConstructor
+@Data
 public class Patron {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

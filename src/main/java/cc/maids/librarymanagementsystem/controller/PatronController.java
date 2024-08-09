@@ -55,15 +55,14 @@ public class PatronController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Patron> updatePatronById(@PathVariable int id, @Valid @RequestBody PatronDTOPut PatronDTOPut) {
-        Patron patron = patronService.getPatronById(id).orElseThrow(() -> new UserNotFoundException(id));
-
-        patron.setName(PatronDTOPut.getName() != null ? PatronDTOPut.getName() : patron.getName());
-        patron.setPhone(PatronDTOPut.getPhone() != null ? PatronDTOPut.getPhone() : patron.getPhone());
-        patron.setEmail(PatronDTOPut.getEmail() != null ? PatronDTOPut.getEmail() : patron.getEmail());
-
-        patronService.updatePatron(patron);
-        return ResponseEntity.ok(patron);
+    public ResponseEntity<Patron> updatePatronById(@PathVariable int id, @Valid @RequestBody PatronDTOPut patronDTOPut) {
+        Patron patron = patronService.mapToPatron(patronDTOPut);
+        try {
+            Patron result = patronService.updatePatron(id ,patron);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }catch (UserNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }

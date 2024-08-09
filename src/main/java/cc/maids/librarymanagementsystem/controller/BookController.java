@@ -54,8 +54,8 @@ public class BookController {
         Book book = bookService.mapToBook(updatedBook);
 
         try {
-            bookService.updateBook(id , book);
-            return new ResponseEntity<>(book, HttpStatus.OK);
+            Book result = bookService.updateBook(id , book);
+            return new ResponseEntity<>(result, HttpStatus.OK);
         }catch(ResourceNotFoundException e) {
             System.out.println(e.getMessage());
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

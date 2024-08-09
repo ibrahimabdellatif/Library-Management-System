@@ -1,23 +1,19 @@
 package cc.maids.librarymanagementsystem.DTO;
 
 import jakarta.validation.constraints.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 import org.hibernate.validator.constraints.ISBN;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class BookDTOPost {
 
     @NotNull(message = "Id is required")
     private int id;
     @NotBlank(message = "Title is required")
-    @Size(min = 1 , max = 255 , message = "Title must be between 1 and 255 characters")
+    @Size(min = 1, max = 255, message = "Title must be between 1 and 255 characters")
     private String title;
     @NotBlank(message = "Author is required")
-    @Size(min = 1 , max = 255 , message = "Author must be between 1 and 255 characters")
+    @Size(min = 1, max = 255, message = "Author must be between 1 and 255 characters")
     private String author;
 
     @NotNull(message = "Publication Year is required")

@@ -1,15 +1,11 @@
 package cc.maids.librarymanagementsystem.DTO;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class BorrowingRecordDTOPost {
 
     @NotNull

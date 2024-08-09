@@ -1,17 +1,13 @@
 package cc.maids.librarymanagementsystem.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "borrowing_record")
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class BorrowingRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

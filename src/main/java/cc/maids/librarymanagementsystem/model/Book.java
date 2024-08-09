@@ -1,15 +1,11 @@
 package cc.maids.librarymanagementsystem.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 @Table(name = "book")
 @Entity
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
