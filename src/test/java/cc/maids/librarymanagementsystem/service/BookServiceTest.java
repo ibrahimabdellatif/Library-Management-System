@@ -126,7 +126,9 @@ public class BookServiceTest {
         updatedBook.setId(bookId);
         updatedBook.setTitle("New Title");
 
+
         when(bookRepository.existsById(bookId)).thenReturn(true);
+        when(bookRepository.findById(bookId)).thenReturn(Optional.of(updatedBook));
         when(bookRepository.save(any(Book.class))).thenAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
 
 //      when
@@ -136,6 +138,7 @@ public class BookServiceTest {
         assertEquals(bookId, result.getId(), "The book id is incorrect");
         assertEquals("New Title", result.getTitle(), "The updated book title should be 'New Title'");
 
+        verify(bookRepository , times(1)).findById(bookId);
         verify(bookRepository, times(1)).existsById(bookId);
         verify(bookRepository, times(1)).save(updatedBook);
     }

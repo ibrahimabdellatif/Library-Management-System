@@ -38,7 +38,8 @@ public class BookService {
     public Book updateBook(int id , Book updatedBook) {
 
         if (bookRepository.existsById(id)){
-           Book book = bookRepository.findById(id).get();
+           Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id , "The Book with this id does not exist"));
+
             book.setTitle(updatedBook.getTitle() != null ? updatedBook.getTitle() : book.getTitle());
             book.setAuthor(updatedBook.getAuthor() != null ? updatedBook.getAuthor() : book.getAuthor());
             book.setISBN(updatedBook.getISBN() != null ? updatedBook.getISBN() : book.getISBN());
